@@ -1,7 +1,7 @@
 package com.excelR.banking.controller;
 
 import com.excelR.banking.model.User;
-import com.excelR.banking.service.UserService;
+import com.excelR.banking.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class RegistrationController {
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody User user) {
@@ -22,8 +22,8 @@ public class RegistrationController {
             userService.registerUser(user);
             return ResponseEntity.ok("Registration successful");
         } catch (Exception e) {
-            e.printStackTrace(); // Log the stack trace for more details
-            return ResponseEntity.status(500).body("Registration failed. Please try again.");
+            e.printStackTrace();
+            return ResponseEntity.status(500).body("You Already have Account.");
         }
     }
 

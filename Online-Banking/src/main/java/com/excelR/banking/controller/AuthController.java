@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.excelR.banking.model.User;
-import com.excelR.banking.service.UserService;
+import com.excelR.banking.service.UserServiceImpl;
 
 @RestController
 @RequestMapping("/banking")
@@ -21,7 +21,7 @@ public class AuthController {
 	private static final org.slf4j.Logger logger=LoggerFactory.getLogger(AuthController.class);
 
 	@Autowired
-	UserService userService;
+	UserServiceImpl userService;
 	
 	@PostMapping("/login")
 	public ResponseEntity<String> authenticateUser(@RequestBody User user) {
@@ -38,6 +38,7 @@ public class AuthController {
 	    }
 	    logger.warn("Invalid Login Attempt with username: " + user.getEmail());
 	    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+		
 	
 	}
 
