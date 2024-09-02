@@ -31,26 +31,17 @@ public class Account {
     private long adharaNumber;
 
     @Column(name = "pan_number", nullable = false)
-    private long panNumber;
+    private String panNumber;
 
     @Column(name = "account_Type")
     private String accountType;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "Customer_id", nullable = false)
-    private User user;
-
+    private User customerId;
 
 	public long getAccountId() {
 		return accountId;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public void setAccountId(long accountId) {
@@ -73,11 +64,11 @@ public class Account {
 		this.adharaNumber = adharaNumber;
 	}
 
-	public long getPanNumber() {
+	public String getPanNumber() {
 		return panNumber;
 	}
 
-	public void setPanNumber(long panNumber) {
+	public void setPanNumber(String panNumber) {
 		this.panNumber = panNumber;
 	}
 
@@ -89,6 +80,16 @@ public class Account {
 		this.accountType = accountType;
 	}
 
-    
+	public User getCustomerId() {
+		return customerId;
+	}
 
+	public void setCustomerId(User customerId) {
+		this.customerId = customerId;
+	}
+
+   
 }
+
+
+// select a.account_number,a.account_type,u.first_name from account a join user u on a.customer_id=u.customer_id where u.customer_id=2;

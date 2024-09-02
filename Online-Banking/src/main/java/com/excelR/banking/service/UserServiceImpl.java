@@ -22,4 +22,9 @@ public class UserServiceImpl implements UserService{
     {
     	return userRepository.getByEmail(email);
     }
+
+	@Override
+	public Optional<User> findById(long customerId) {
+		return userRepository.findById(customerId);
+	}
 }

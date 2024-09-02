@@ -25,58 +25,40 @@ import lombok.Setter;
 @Table(name = "User")
 public class User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Customer_id")
-	private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Customer_id")
+    private long id;
 
-	@Column(name = "first_name")
-	private String firstName;
+    @Column(name = "first_name")
+    private String firstName;
 
-	@Column(name = "last_name")
-	private String lastName;
+    @Column(name = "last_name")
+    private String lastName;
 
-	@Column(name = "email", nullable = false,unique = true)
-	private String email;
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
 
-	@Column(name = "phone_number")
-	private String phoneNumber;
+    @Column(name = "phone_number")
+    private String phoneNumber;
 
-	@Column(name = "password")
-	private String password;
+    @Column(name = "password")
+    private String password;
 
-	@Column(name = "age")
-	private int age;
+    @Column(name = "age")
+    private int age;
 
-	@Column(name = "address")
-	private String address;
+    @Column(name = "address")
+    private String address;
 
-	@Column(name = "gender")
-	private String gender;
-	
-	@Column(name="created_date")
-	private LocalDate createdDate;
-	
-	 @OneToMany(mappedBy = "user",cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
-	 private List<Account> accounts;
+    @Column(name = "gender")
+    private String gender;
 
-	
+    @Column(name = "created_date")
+    private LocalDate createdDate;
 
-	public List<Account> getAccounts() {
-		return accounts;
-	}
-	
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
-	}
-
-	public LocalDate getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(LocalDate createdDate) {
-		this.createdDate = createdDate;
-	}
+    @OneToMany(mappedBy = "customerId", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    private List<Account> accounts;
 
 	public long getId() {
 		return id;
@@ -150,10 +132,21 @@ public class User {
 		this.gender = gender;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", phoneNumber=" + phoneNumber + ", password=" + password + ", age=" + age + ", address=" + address
-				+ ", gender=" + gender + "]";
+	public LocalDate getCreatedDate() {
+		return createdDate;
 	}
+
+	public void setCreatedDate(LocalDate createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public List<Account> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
+	}
+
+    
 }

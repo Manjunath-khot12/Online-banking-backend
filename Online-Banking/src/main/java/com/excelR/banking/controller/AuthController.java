@@ -39,6 +39,7 @@ public class AuthController {
 	    logger.warn("Invalid Login Attempt with username: " + user.getEmail());
 	    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
 		
+		
 	
 	}
 

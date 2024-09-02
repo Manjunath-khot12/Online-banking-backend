@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class RegistrationController {
 
     @Autowired
-    private UserServiceImpl userService;
+    private UserServiceImpl userServiceImpl;
 
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody User user) {
@@ -19,7 +19,7 @@ public class RegistrationController {
             if (user.getEmail() == null || user.getEmail().isEmpty()) {
                 return ResponseEntity.badRequest().body("Email cannot be null or empty.");
             }
-            userService.registerUser(user);
+            userServiceImpl.registerUser(user);
             return ResponseEntity.ok("Registration successful");
         } catch (Exception e) {
             e.printStackTrace();
