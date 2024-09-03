@@ -1,7 +1,8 @@
-package com.excelR.banking.service;
+package com.excelR.banking.serviceImpl;
 
 import com.excelR.banking.model.User;
 import com.excelR.banking.repository.UserRepository;
+import com.excelR.banking.service.UserService;
 
 import java.util.Optional;
 

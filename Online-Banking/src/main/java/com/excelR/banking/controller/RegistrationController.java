@@ -1,7 +1,8 @@
 package com.excelR.banking.controller;
 
 import com.excelR.banking.model.User;
-import com.excelR.banking.service.UserServiceImpl;
+import com.excelR.banking.serviceImpl.UserServiceImpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

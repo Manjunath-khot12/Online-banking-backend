@@ -35,11 +35,15 @@ public class Account {
 
     @Column(name = "account_Type")
     private String accountType;
+    
+    @Column(name="initila_deposit",nullable=false)
+    private long initialDeposit;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "Customer_id", nullable = false)
     private User customerId;
-
+    
+    
 	public long getAccountId() {
 		return accountId;
 	}
