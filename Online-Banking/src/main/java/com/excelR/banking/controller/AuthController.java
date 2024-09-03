@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.excelR.banking.model.User;
-import com.excelR.banking.service.UserServiceImpl;
+import com.excelR.banking.serviceImpl.UserServiceImpl;
 
 @RestController
 @RequestMapping("/banking")

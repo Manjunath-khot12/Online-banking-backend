@@ -1,14 +1,17 @@
-package com.excelR.banking.service;
+package com.excelR.banking.serviceImpl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.excelR.banking.dto.AccountUserDTO;
 import com.excelR.banking.model.Account;
 import com.excelR.banking.model.User;
 import com.excelR.banking.repository.AccountRepository;
 import com.excelR.banking.repository.UserRepository;
+import com.excelR.banking.service.AccountService;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -29,5 +32,8 @@ public class AccountServiceImpl implements AccountService {
             throw new RuntimeException("User not found with id " + userId);
         }
     }
-
+   
+	public List<AccountUserDTO> getAccountDetailsByCustomerId(Long customerId) {
+        return accountRepository.findAccountDetailsByCustomerId(customerId);
+    }
 }
