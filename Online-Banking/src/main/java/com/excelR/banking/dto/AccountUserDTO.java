@@ -14,13 +14,48 @@ public class AccountUserDTO {
     private String firstName;
     private String accountType;
     private long initialDeposit;
+    private long adharaNumber;
+    private String email;
+    private long phoneNumber;
 
-    public AccountUserDTO(long accountNumber, String firstName, String accountType,long initialDeposit) {
+    public AccountUserDTO(long accountNumber, String firstName, String accountType,long initialDeposit,long adharaNumber,String email,long phoneNumber) {
         this.accountNumber = accountNumber;
         this.firstName = firstName;
         this.accountType = accountType;
         this.initialDeposit=initialDeposit;
+        this.adharaNumber=adharaNumber;
+        this.email=email;
+        this.phoneNumber=phoneNumber;
     }
+
+    
+	public long getPhoneNumber() {
+		return phoneNumber;
+	}
+
+
+	public void setPhoneNumber(long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public long getAdharaNumber() {
+		return adharaNumber;
+	}
+
+	public void setAdharaNumber(long adharaNumber) {
+		this.adharaNumber = adharaNumber;
+	}
 
 	public long getInitialDeposit() {
 		return initialDeposit;
