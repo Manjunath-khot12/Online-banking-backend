@@ -136,9 +136,6 @@ public class User {
 		return createdDate;
 	}
 
-	public void setCreatedDate(LocalDate createdDate) {
-		this.createdDate = createdDate;
-	}
 
 	public List<Account> getAccounts() {
 		return accounts;
