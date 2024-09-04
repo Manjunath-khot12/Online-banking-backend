@@ -24,7 +24,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long accountId;
 
-    @Column(name = "account_Number", nullable = false)
+    @Column(name = "account_Number",nullable = false)
     private long accountNumber;
 
     @Column(name = "adhara_number", nullable = false)
@@ -33,7 +33,15 @@ public class Account {
     @Column(name = "pan_number", nullable = false)
     private String panNumber;
 
-    @Column(name = "account_Type")
+    public long getInitialDeposit() {
+		return initialDeposit;
+	}
+
+	public void setInitialDeposit(long initialDeposit) {
+		this.initialDeposit = initialDeposit;
+	}
+
+	@Column(name = "account_Type")
     private String accountType;
     
     @Column(name="initila_deposit",nullable=false)
