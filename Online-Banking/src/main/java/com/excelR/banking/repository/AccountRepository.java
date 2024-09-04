@@ -13,7 +13,11 @@ import com.excelR.banking.model.Account;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
     
-	@Query("SELECT new com.excelR.banking.dto.AccountUserDTO(a.accountNumber, u.firstName, a.accountType,a.initialDeposit) FROM Account a JOIN a.customerId u WHERE u.id = :customerId")
-	List<AccountUserDTO> findAccountDetailsByCustomerId(@Param("customerId") Long customerId);
+    @Query("SELECT new com.excelR.banking.dto.AccountUserDTO(a.accountNumber, u.firstName, a.accountType, a.initialDeposit, a.adharaNumber,u.email,u.phoneNumber) " +
+            "FROM Account a JOIN a.customerId u WHERE u.id = :customerId")
+     List<AccountUserDTO> findAccountDetailsByCustomerId(@Param("customerId") Long customerId);
+	
+	boolean existsByAccountNumber(long accountNumber);
+	
 
 }
