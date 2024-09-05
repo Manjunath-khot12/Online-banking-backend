@@ -1,5 +1,7 @@
 package com.excelR.banking.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,11 +31,17 @@ public class RegistrationController {
             }
             userServiceImpl.registerUser(user);
             
+            
+            // sending login details to the user via email 
+            Optional<User> optionalUser = userServiceImpl.authenticateUser(user.getEmail());
+            
+            
             String subject = "Registration Successful";
             String body = "Dear " + user.getFirstName() + ",\n\n" +
                           "Your registration is successful. Here are your login details:\n\n" +
-                          "Username: " + user.getEmail() + "\n" +
-                          "Password: " + user.getPassword() + "\n\n" +
+                          "Username: " + optionalUser.get().getId() + "\n" +
+                          "Password: " + user.getPassword() + "\n" +
+                          "Email Id: " + user.getEmail() + "\n\n" +
                           "Thank you for Registering with us.";
             
             emailService.sendRegistrationEmail(user.getEmail(), subject, body);
