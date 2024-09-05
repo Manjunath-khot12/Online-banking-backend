@@ -1,5 +1,6 @@
 package com.excelR.banking.repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,7 +14,7 @@ import com.excelR.banking.model.Account;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
     
-    @Query("SELECT new com.excelR.banking.dto.AccountUserDTO(a.accountNumber, u.firstName, a.accountType, a.initialDeposit, a.adharaNumber,u.email,u.phoneNumber) " +
+    @Query("SELECT new com.excelR.banking.dto.AccountUserDTO(a.accountNumber, u.firstName, a.accountType, a.initialDeposit, a.adharaNumber,u.email,u.phoneNumber,a.createdDate) " +
             "FROM Account a JOIN a.customerId u WHERE u.id = :customerId")
      List<AccountUserDTO> findAccountDetailsByCustomerId(@Param("customerId") Long customerId);
 	
