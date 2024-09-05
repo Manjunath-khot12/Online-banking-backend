@@ -1,5 +1,7 @@
 package com.excelR.banking.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -32,8 +34,21 @@ public class Account {
 
     @Column(name = "pan_number", nullable = false)
     private String panNumber;
+    
+    @Column(name="created_date")
+    private LocalDate createdDate;
+    
+    
 
-    public long getInitialDeposit() {
+    public LocalDate getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(LocalDate createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public long getInitialDeposit() {
 		return initialDeposit;
 	}
 

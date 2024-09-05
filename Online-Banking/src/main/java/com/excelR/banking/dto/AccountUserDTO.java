@@ -1,5 +1,8 @@
 package com.excelR.banking.dto;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,8 +20,9 @@ public class AccountUserDTO {
     private long adharaNumber;
     private String email;
     private long phoneNumber;
+    private LocalDate createdDate;
 
-    public AccountUserDTO(long accountNumber, String firstName, String accountType,long initialDeposit,long adharaNumber,String email,long phoneNumber) {
+    public AccountUserDTO(long accountNumber, String firstName, String accountType,long initialDeposit,long adharaNumber,String email,long phoneNumber,LocalDate createdDate) {
         this.accountNumber = accountNumber;
         this.firstName = firstName;
         this.accountType = accountType;
@@ -26,9 +30,20 @@ public class AccountUserDTO {
         this.adharaNumber=adharaNumber;
         this.email=email;
         this.phoneNumber=phoneNumber;
+        this.createdDate=createdDate;
     }
 
     
+	public LocalDate getCreatedDate() {
+		return createdDate;
+	}
+
+
+	public void setCreatedDate(LocalDate createdDate) {
+		this.createdDate = createdDate;
+	}
+
+
 	public long getPhoneNumber() {
 		return phoneNumber;
 	}
