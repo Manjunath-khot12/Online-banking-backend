@@ -1,6 +1,6 @@
 package com.excelR.banking.model;
 
-import java.time.LocalDate;
+
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -54,8 +54,6 @@ public class User {
     @Column(name = "gender")
     private String gender;
 
-    @Column(name = "created_date")
-    private LocalDate createdDate;
 
     @OneToMany(mappedBy = "customerId", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
     private List<Account> accounts;
@@ -131,11 +129,6 @@ public class User {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
-	public LocalDate getCreatedDate() {
-		return createdDate;
-	}
-
 
 	public List<Account> getAccounts() {
 		return accounts;
