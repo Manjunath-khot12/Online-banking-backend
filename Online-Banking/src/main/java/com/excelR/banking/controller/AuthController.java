@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.excelR.banking.model.User;
+import com.excelR.banking.serviceImpl.EmailService;
 import com.excelR.banking.serviceImpl.UserServiceImpl;
 
 @RestController
@@ -24,6 +25,9 @@ public class AuthController {
 
     @Autowired
     UserServiceImpl userService;
+    
+    @Autowired
+    private EmailService emailService;
     
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> authenticateUser(@RequestBody User user) {
@@ -62,8 +66,20 @@ public class AuthController {
             Map<String, String> response = new HashMap<>();
             response.put("firstName", optionalUser.get().getFirstName());
             response.put("password", optionalUser.get().getPassword());
+            response.put("email", optionalUser.get().getEmail());
+            String subject = "Forgot Password";
+            String body = "Dear " + optionalUser.get().getFirstName()+ ",\n\n" +
+                          "Your registrated password is :\n\n" +
+                          "Username: " + optionalUser.get().getId() + "\n" +
+                          "Password: " +  optionalUser.get().getPassword()+ "\n\n" +
+                          
+                          "Thank you .";
+            
+            emailService.sendRegistrationEmail(optionalUser.get().getEmail(), subject, body);
             return ResponseEntity.ok(response);
         }
+        
+       
 
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "Invalid credentials"));
     }}
