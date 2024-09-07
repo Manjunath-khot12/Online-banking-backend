@@ -51,10 +51,10 @@ public class Account {
     private User customerId;
 
     @OneToMany(mappedBy = "sourceAccount", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<TranscationHistory> sentTransactions;
+    private List<TransactionHistory> sentTransactions;
     
     @OneToMany(mappedBy = "destinationAccount", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<TranscationHistory> receivedTransactions;
+    private List<TransactionHistory> receivedTransactions;
 
     // Getters and Setters
     public LocalDate getCreatedDate() {
@@ -120,19 +120,19 @@ public class Account {
         this.customerId = customerId;
     }
 
-    public List<TranscationHistory> getSentTransactions() {
+    public List<TransactionHistory> getSentTransactions() {
         return sentTransactions;
     }
 
-    public void setSentTransactions(List<TranscationHistory> sentTransactions) {
+    public void setSentTransactions(List<TransactionHistory> sentTransactions) {
         this.sentTransactions = sentTransactions;
     }
 
-    public List<TranscationHistory> getReceivedTransactions() {
+    public List<TransactionHistory> getReceivedTransactions() {
         return receivedTransactions;
     }
 
-    public void setReceivedTransactions(List<TranscationHistory> receivedTransactions) {
+    public void setReceivedTransactions(List<TransactionHistory> receivedTransactions) {
         this.receivedTransactions = receivedTransactions;
     }
 }
