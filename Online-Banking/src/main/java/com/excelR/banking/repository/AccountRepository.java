@@ -25,6 +25,10 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 	    @Query("UPDATE Account a SET a.initialDeposit = a.initialDeposit + :amount WHERE a.accountNumber = :accountNumber")
 	    void depositAmount(long accountNumber, long amount);
 	
+	 @Modifying
+	    @Query("UPDATE Account a SET a.initialDeposit = a.initialDeposit - :amount WHERE a.accountNumber = :accountNumber")
+	    void withdrawAmount(long accountNumber, long amount);
 	
 
 }
+ 

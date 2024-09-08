@@ -31,4 +31,36 @@ public class TransactionController {
             return ResponseEntity.status(500).body("Internal Server Error: " + e.getMessage());
         }
     }
+    
+    @PostMapping("/withdrawAmount")
+    public ResponseEntity<String> withdrawAmount(@RequestBody TransactionHistory transactionHistory)
+    {
+    	try
+    	{
+    		transactionService.saveTransaction(transactionHistory);
+    		transactionService.updateWithdrawAccountBalances(transactionHistory);
+    		
+    	}
+    	catch (Exception e) {
+			e.printStackTrace();
+		}
+    	return ResponseEntity.ok("Withdraw successful");
+    }
+    
+    
+    
+    @PostMapping("/findTransfer")
+    public ResponseEntity<String> fundTransfer(@RequestBody TransactionHistory transactionHistory)
+    {
+    	try
+    	{
+    		transactionService.saveTransaction(transactionHistory);
+    		transactionService.transferAmount(transactionHistory);
+    	}
+    	catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}
+    	return ResponseEntity.ok("Fund Transfered ");
+    }
 }
