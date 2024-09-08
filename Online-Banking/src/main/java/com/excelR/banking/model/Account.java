@@ -7,8 +7,6 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -22,13 +20,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "account")
 public class Account {
-
-    @Id
-    @Column(name = "account_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long accountId;
-
-    @Column(name = "account_Number", nullable = false,unique=true)
+    
+	@Id
+    @Column(name = "account_Number")
     private long accountNumber;
 
     @Column(name = "adhara_number", nullable = false)
@@ -64,14 +58,7 @@ public class Account {
  	public void setCreatedDate(LocalDate createdDate) {
  		this.createdDate = createdDate;
  	}
-    public long getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(long accountId) {
-        this.accountId = accountId;
-    }
-
+  
     public long getAccountNumber() {
         return accountNumber;
     }

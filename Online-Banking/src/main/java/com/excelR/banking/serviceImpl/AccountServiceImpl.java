@@ -57,4 +57,6 @@ public class AccountServiceImpl implements AccountService {
 	public List<AccountUserDTO> getAccountDetailsByCustomerId(Long customerId) {
         return accountRepository.findAccountDetailsByCustomerId(customerId);
     }
+
+
 }
