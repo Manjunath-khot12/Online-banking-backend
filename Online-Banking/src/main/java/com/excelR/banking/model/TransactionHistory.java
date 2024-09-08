@@ -31,11 +31,11 @@ public class TransactionHistory {
 	@Column(name="transaction_type", nullable=false)
 	private String transactionType;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name="source_account", referencedColumnName = "account_number", nullable = false)
 	private Account sourceAccount;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name="destination_account", referencedColumnName = "account_number", nullable = true)
 	private Account destinationAccount;
 	
