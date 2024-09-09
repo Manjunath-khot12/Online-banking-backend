@@ -43,13 +43,14 @@ public class TransactionController {
     	}
     	catch (Exception e) {
 			e.printStackTrace();
+			 return ResponseEntity.status(500).body("insufficent Balance.");
 		}
     	return ResponseEntity.ok("Withdraw successful");
     }
     
     
     
-    @PostMapping("/findTransfer")
+    @PostMapping("/fundTransfer")
     public ResponseEntity<String> fundTransfer(@RequestBody TransactionHistory transactionHistory)
     {
     	try
@@ -60,6 +61,7 @@ public class TransactionController {
     	catch(Exception e)
     	{
     		e.printStackTrace();
+    		return ResponseEntity.status(500).body("insufficent Balance.");
     	}
     	return ResponseEntity.ok("Fund Transfered ");
     }
