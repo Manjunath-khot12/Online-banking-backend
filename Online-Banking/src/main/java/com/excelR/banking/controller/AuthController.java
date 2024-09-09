@@ -67,15 +67,22 @@ public class AuthController {
             response.put("firstName", optionalUser.get().getFirstName());
             response.put("password", optionalUser.get().getPassword());
             response.put("email", optionalUser.get().getEmail());
-            String subject = "Forgot Password";
-            String body = "Dear " + optionalUser.get().getFirstName()+ ",\n\n" +
-                          "Your registrated password is :\n\n" +
-                          "Username: " + optionalUser.get().getId() + "\n" +
-                          "Password: " +  optionalUser.get().getPassword()+ "\n\n" +
-                          
-                          "Thank you .";
             
+            String subject = "Password Recovery Request";
+
+            String body = "Dear " + optionalUser.get().getFirstName() + ",\n\n" +
+                          "We have received a request to recover your password. Below are your account details:\n\n" +
+                          "Username: " + optionalUser.get().getId() + "\n" +
+                          "Password: " + optionalUser.get().getPassword() + "\n\n" +
+                          "For your security, we recommend updating your password once you log in.\n\n" +
+                          "If you did not request this, please contact our customer support team immediately.\n\n" +
+                          "Thank you for banking with us.\n\n" +
+                          "Best Regards,\n" +
+                          "Customer Support Team\n" +
+                          "ExcelR bank";
+
             emailService.sendRegistrationEmail(optionalUser.get().getEmail(), subject, body);
+
             return ResponseEntity.ok(response);
         }
         
