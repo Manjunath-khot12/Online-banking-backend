@@ -37,14 +37,20 @@ public class RegistrationController {
             
             
             String subject = "Registration Successful";
+
             String body = "Dear " + user.getFirstName() + ",\n\n" +
-                          "Your registration is successful. Here are your login details:\n\n" +
+                          "We are pleased to confirm that your registration has been successfully completed. Below are your login credentials:\n\n" +
                           "Username: " + optionalUser.get().getId() + "\n" +
                           "Password: " + user.getPassword() + "\n" +
-                          "Email Id: " + user.getEmail() + "\n\n" +
-                          "Thank you for Registering with us.";
-            
+                          "Registered Email ID: " + user.getEmail() + "\n\n" +
+                          "Please keep these credentials secure and confidential. If you have any questions or require further assistance, feel free to contact our customer support team.\n\n" +
+                          "Thank you for choosing our services.\n\n" +
+                          "Best Regards,\n" +
+                          "Customer Support Team\n" +
+                          "ExcelR Bank";
+
             emailService.sendRegistrationEmail(user.getEmail(), subject, body);
+
             
             return ResponseEntity.ok("Registration successful");
         } catch (Exception e) {
