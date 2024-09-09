@@ -21,6 +21,9 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 	
 	boolean existsByAccountNumber(long accountNumber);
 	
+	 @Query("SELECT a.initialDeposit FROM Account a WHERE a.accountNumber = :accountNumber")
+	    long getBalanceByAccountNumber(@Param("accountNumber") long accountNumber);
+	
 	 @Modifying
 	    @Query("UPDATE Account a SET a.initialDeposit = a.initialDeposit + :amount WHERE a.accountNumber = :accountNumber")
 	    void depositAmount(long accountNumber, long amount);
