@@ -1,12 +1,15 @@
 package com.excelR.banking.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 
 import com.excelR.banking.model.TransactionHistory;
 import com.excelR.banking.serviceImpl.TransactionServiceImpl;
@@ -64,5 +67,11 @@ public class TransactionController {
     		return ResponseEntity.status(500).body("insufficent Balance.");
     	}
     	return ResponseEntity.ok("Fund Transfered ");
+    }
+    
+    @GetMapping("/transactionHistory/{accountNumber}")
+    public List<TransactionHistory> findBySourceOrDestinationAccount(@PathVariable long accountNumber)
+    {
+    	return transactionService.findBySourceOrDestinationAccount(accountNumber);
     }
 }
