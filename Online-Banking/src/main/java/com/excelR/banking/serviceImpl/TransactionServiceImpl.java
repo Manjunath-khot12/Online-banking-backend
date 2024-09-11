@@ -25,6 +25,9 @@ public class TransactionServiceImpl implements TransactionService {
 
 	@Autowired
 	private EmailService emailService;
+	
+	@Autowired
+	TransactionHistoryRepository transactionReposotory;
 
 	@Override
 	public TransactionHistory saveTransaction(TransactionHistory transactionHistory) {
@@ -231,7 +234,11 @@ public class TransactionServiceImpl implements TransactionService {
 	}
 
 	@Override
-	public List<TransactionHistory> findBySourceOrDestinationAccount(Long accountNumber) {
-		return transactionHistoryRepository.findBySourceOrDestinationAccount(accountNumber);
+	public List<Object[]> getTransactionHistoryByAccountNumber(Long accountNumber) {
+		 return transactionHistoryRepository.findTransactionDetailsByAccountNumber(accountNumber);
 	}
+
+	
+
+
 }

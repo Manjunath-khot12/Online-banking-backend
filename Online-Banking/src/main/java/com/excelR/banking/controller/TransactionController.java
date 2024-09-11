@@ -1,5 +1,7 @@
 package com.excelR.banking.controller;
 
+
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,9 +71,20 @@ public class TransactionController {
     	return ResponseEntity.ok("Fund Transfered ");
     }
     
-    @GetMapping("/transactionHistory/{accountNumber}")
-    public List<TransactionHistory> findBySourceOrDestinationAccount(@PathVariable long accountNumber)
-    {
-    	return transactionService.findBySourceOrDestinationAccount(accountNumber);
+    
+    /**
+     * Retrieves all transaction histories for a given account number.
+     *
+     * @param accountNumber the account number to filter transactions
+     * @return ResponseEntity containing the list of TransactionHistory records
+     */
+    @GetMapping("/account/{accountNumber}")
+    public ResponseEntity<List<Object[]>> getTransactionHistory(@PathVariable Long accountNumber) {
+        List<Object[]> transactions = transactionService.getTransactionHistoryByAccountNumber(accountNumber);
+        if (transactions.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(transactions);
     }
+    
 }
