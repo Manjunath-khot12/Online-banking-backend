@@ -64,6 +64,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.online-banking</groupId>
+			<artifactId>online-banking</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
